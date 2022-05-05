@@ -30,7 +30,7 @@ Wanneer de gebruiker de datum van de huidige dag selecteert, kan hij toevoegen:
   o	Hoeveel calorieën dit voedingsmiddel per 100 gram bevat. 
   o	Hoeveel zout dit voedingsmiddel per 100 gram bevat. 
   o	Hoeveel verzadigd vet dit voedingsmiddel per 100 gram bevat.
--	Indien het bovenstaande niet op het voedingsmiddel staat vermeld of de gebruiker het niet nodig vindt om deze informatie in te vullen, kunnen deze velden leeg worden gelaten en wordt deze informatie van het internet gehaald. (Voedingswaarde van voedingsmiddelen met de beginletter A (voedingswaardetabel.nl))
+-	Indien het bovenstaande niet op het voedingsmiddel staat vermeld of de gebruiker het niet nodig vindt om deze informatie in te vullen, kunnen deze velden leeg worden gelaten en wordt deze informatie van het internet gehaald. [Informatie over bestanddelen voedingsmiddelen](Voedingswaarde van voedingsmiddelen met de beginletter A (voedingswaardetabel.nl))
 
 ### Zout
 Wanneer de gebruiker op de button klikt waarop zout staat kan hij zien hoeveel zout hij tot nu toe die dag heeft binnengekregen. Wanneer deze hoeveelheid tussen de 0 en 5 gram ligt, wordt de hoeveelheid weergegeven in groene cijfers. Tussen de 5 en 6 in oranje cijfers en boven de 6 in rode cijfers. Naast dat een hoeveelheid boven de 6 gram in rode letters wordt weergegeven, krijgt de gebruiker ook de volgende waarschuwing te zien: “Het advies is om niet meer dan 6 gram zout per dag te eten”. Bloeddruk verlagen met leefstijl | Hartstichting
