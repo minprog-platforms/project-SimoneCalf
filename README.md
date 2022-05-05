@@ -1,13 +1,46 @@
 # Voorstel
 
 ## Probleem
-De meeste voedingsmiddelen in de winkel zijn voorverpakt en hierop moet verplicht een lijst met ingrediënten worden velmeld en de eventueel aanwezige allergenen. Echter nodigen de kleine letters op het etiket niet erg uit om het etiket goed te lezen [voedingscentrum] (https://www.voedingscentrum.nl/encyclopedie/wet-voedselinformatie.aspx#:~:text=Met%20de%20wet%20Voedselinformatie%20is%20het%20verplicht%20om,vermeld%20worden%2C%20zodat%20producten%20goed%20vergeleken%20kunnen%20worden). Ook kost het consumenten simpelweg tijd om de voor hen belangrijke informatie op het etiket te zoeken. Naast dat veel consumenten door het gebruik van deze app tijd kunnen besparen, kan het ook een uitkomst zijn voor slechtziende en al helemaal voor slechtziende met een allergie.
+Momenteel is er voor hartpatiënten geen applicatie waarmee zij makkelijk bij kunnen houden hoeveel zout en verzadigd vet zij binnenkrijgen. Een hoge bloeddruk verhoogt de kans op een hartinfarct of beroerte en een hoog cholesterolgehalte de kans op hart- en vaatziekten. Zout eten kan de bloeddruk verhogen en het eten van verzadigd vet het cholesterol.  
 
 ## Samenvatting
-Deze app zal het voor gebruikers makkelijker maken om in de supermarkt te bepalen of ze bepaalde voedingsmiddelen willen aanschaffen of niet op basis van de in het voedingsmiddel aanwezige ingrediënten en allergenen.
+Deze applicatie zal het voor hartpatiënten makkelijker maken om inzicht te krijgen in hoeveel zout en verzadigd vet zij binnenkrijgen. 
 
 ## Gebruik
-Wanneer de gebruiker de app opent kan hij invullen welke ingrediënten en allergenen hij niet wil consumeren. Nadat hij één of meerdere ingrediënten of allergenen heeft opgegeven, kan hij op een button klikken met de tekst: “volgende” en komt hij op een nieuw scherm. Op dit scherm kan de gebruiker de barcode van een product scannen. Nadat hij dit heeft gedaan, zijn er twee mogelijke vervolg schermen. Naar welk scherm de gebruiker wordt “gestuurd” is afhankelijk van of het product reeds door een eerdere gebruiker is gescand en deze de moeite heeft genomen om data in te voeren over het voedingsmiddel. Wanneer dit niet het geval is, komt de gebruiker op een scherm met vije invoervelden, waarin hij ingrediënten en allergenen kan invoeren.  Wanneer er wel al informatie over het voedingsmiddel bekend is, komt de gebruiker op een scherm met een groen vinkje of een rood kruis. 
+
+### Account aanmaken
+- Email
+- Wachtwoord
+-	Naam
+-	Gewicht
+-	Geslacht 
+
+### Kalender
+Kalender waar de gebruiker een datum op kan selecteren. 
+
+Wanneer de gebruiker een datum selecteert die niet de datum van de huidige dag is, kan hij informatie zien over:
+-	Wat hij die dag heeft gegeten.
+-	Hoeveel zout en verzadigd vet er in de individuele voedingsmiddelen zat die hij heeft gegeten.
+-	Hoeveel zout en verzadigd vet hij die dag in totaal heeft binnen gekregen. 
+
+Wanneer de gebruiker de datum van de huidige dag selecteert, kan hij toevoegen:
+-	Welk voedingsmiddel hij gaat eten of drinken.
+-	Hoeveel gram hij hiervan gaat eten of drinken.
+-	Indien het op het voedingsmiddel vermeld is, kan de gebruiker het volgende invullen:
+  o	Hoeveel calorieën dit voedingsmiddel per 100 gram bevat. 
+  o	Hoeveel zout dit voedingsmiddel per 100 gram bevat. 
+  o	Hoeveel verzadigd vet dit voedingsmiddel per 100 gram bevat.
+-	Indien het bovenstaande niet op het voedingsmiddel staat vermeld of de gebruiker het niet nodig vindt om deze informatie in te vullen, kunnen deze velden leeg worden gelaten en wordt deze informatie van het internet gehaald. (Voedingswaarde van voedingsmiddelen met de beginletter A (voedingswaardetabel.nl))
+
+### Zout
+Wanneer de gebruiker op de button klikt waarop zout staat kan hij zien hoeveel zout hij tot nu toe die dag heeft binnengekregen. Wanneer deze hoeveelheid tussen de 0 en 5 gram ligt, wordt de hoeveelheid weergegeven in groene cijfers. Tussen de 5 en 6 in oranje cijfers en boven de 6 in rode cijfers. Naast dat een hoeveelheid boven de 6 gram in rode letters wordt weergegeven, krijgt de gebruiker ook de volgende waarschuwing te zien: “Het advies is om niet meer dan 6 gram zout per dag te eten”. Bloeddruk verlagen met leefstijl | Hartstichting
+
+### Verzadigd vet
+Wanneer de gebruiker op de button klikt waarop verzadigd vet staat kan hij zien hoeveel verzadigd vet hij tot nu toe die dag heeft binnengekregen. Wanneer de gebruiker nog niet heel erg hoeft op te passen dat hij te veel verzadigd vet binnenkrijgt, wordt de hoeveelheid die hij tot nu toe heeft binnengekregen in groene cijfers weergegeven. Wanneer hij een beetje moet gaan opletten in oranje cijfers en als hij te veel heeft binnengekregen in rode cijfers. Naast dat de hoeveelheid die hij binnen heeft gekregen in rode letters wordt weergegeven als dit te veel is, krijgt hij ook de volgende waarschuwing te zien: “Er wordt in Nederland en vele andere landen aangeraden om niet meer dan 10% van je dagelijkse energie uit verzadigd vet te halen”. Wanneer de gebruiker de app voor het eerst gebruikt en een man is, wordt het overschrijden van een hoeveelheid van 25 gram aan verzadigd vet afgeraden. Bij vrouwen een hoeveelheid van 20 gram. Later wordt deze hoeveelheid bepaald aan de hand van het gemiddelde aantal calorieën dat de gebruiker binnenkrijgt. Is verzadigd vet slecht voor je? | Voedingscentrum
+
+### Grafiek
+Wanneer de gebruiker op de button grafiek klikt, kan hij vervolgens kiezen voor een button met het woord zout en voor een button met het woord verzadigd vet. Wanneer hij op de button met het woord zout klikt, krijgt hij een lijngrafiek te zien met gegevens van de afgelopen 24 dagen met op de x-as de dagen en op de y-as de hoeveelheid zout in gram dat hij heeft binnengekregen. Wanneer hij op de button met het woord verzadig vet klikt, krijgt hij een lijngrafiek te zien met op de x-as de dagen en op de y-as de hoeveelheid verzadigd vet in gram.
+
 
 ## Voorwaarden
 
