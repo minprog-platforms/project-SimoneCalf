@@ -52,6 +52,10 @@ Wanneer de gebruiker op de button grafiek klikt, kan hij vervolgens kiezen voor 
 
 ### moeilijkste onderdelen
 
+![een](https://user-images.githubusercontent.com/90318458/166954529-d56d5f78-0af7-403f-8be8-604822c3b41a.jpeg)
+![twee](https://user-images.githubusercontent.com/90318458/166954548-c6700266-fda7-410d-bb09-8a0ba89be0c9.jpeg)
+![drie](https://user-images.githubusercontent.com/90318458/166954591-4b127294-11bd-41c0-bf3a-05e71d6c9c95.jpeg)
+
 
 
 
