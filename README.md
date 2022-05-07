@@ -23,13 +23,15 @@ Deze applicatie zal het voor hartpatiënten makkelijker maken om inzicht te krij
 ![een_zes](https://user-images.githubusercontent.com/90318458/167251617-cd00793d-5200-4f44-8c5a-acd435cd14da.JPG)
 
 ### Kalender
-Kalender waar de gebruiker een datum op kan selecteren. 
+Kalender waar de gebruiker een datum op kan selecteren.
+
 ![twee_een](https://user-images.githubusercontent.com/90318458/167251652-493c293c-3215-49db-864b-b466a3cfd664.JPG)
 
 Wanneer de gebruiker een datum selecteert die niet de datum van de huidige dag is, kan hij informatie zien over:
 -	Wat hij die dag heeft gegeten.
 -	Hoeveel zout en verzadigd vet er in de individuele voedingsmiddelen zat die hij heeft gegeten.
 -	Hoeveel zout en verzadigd vet hij die dag in totaal heeft binnen gekregen.
+-	
 ![twee_twee](https://user-images.githubusercontent.com/90318458/167251680-9026b0f4-5e14-45c3-ac24-ae993051a50b.JPG)
 
 Wanneer de gebruiker de datum van de huidige dag selecteert, kan hij toevoegen:
@@ -40,6 +42,7 @@ Wanneer de gebruiker de datum van de huidige dag selecteert, kan hij toevoegen:
   o	Hoeveel zout dit voedingsmiddel per 100 gram bevat. 
   o	Hoeveel verzadigd vet dit voedingsmiddel per 100 gram bevat.
 -	Indien het bovenstaande niet op het voedingsmiddel staat vermeld of de gebruiker het niet nodig vindt om deze informatie in te vullen, kunnen deze velden leeg worden gelaten en wordt deze informatie van het internet gehaald [Voedingswaarde tabel](https://www.voedingswaardetabel.nl/voedingswaarde/).
+-
 ![twee_drie](https://user-images.githubusercontent.com/90318458/167251719-69c0a043-9562-41af-a8eb-25452f872a2f.JPG)
 
 ### Zout
@@ -68,9 +71,7 @@ Op dit moment zijn er geen apps met deze specifieke functie. Wel zijn er veel di
 
 ### moeilijkste onderdelen
 
-![een](https://user-images.githubusercontent.com/90318458/166954529-d56d5f78-0af7-403f-8be8-604822c3b41a.jpeg)
-![twee](https://user-images.githubusercontent.com/90318458/166954548-c6700266-fda7-410d-bb09-8a0ba89be0c9.jpeg)
-![drie](https://user-images.githubusercontent.com/90318458/166954591-4b127294-11bd-41c0-bf3a-05e71d6c9c95.jpeg)
+
 
 
 
