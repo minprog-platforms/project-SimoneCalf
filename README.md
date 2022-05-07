@@ -62,7 +62,9 @@ Wanneer de gebruiker op de button grafiek klikt, kan hij vervolgens kiezen voor 
 ## Voorwaarden
 
 ### Gegevensbronnen
-Via deze site moet informatie worden verkregen over de hoeveelheid zout, verzadigd vet en calorieen van voedingsmiddelen indie de gebruiker dit niet handmatig invult [Voedingswaardetabel](https://www.voedingswaardetabel.nl/voedingswaarde/). 
+- Wanneer de gebruiker de kalender button aanklikt en vervolgens de huidige datum aanlikt en niet handmatig de hoeveelheid calorieen, zout en verzadig vet invult voor een voedingsmiddel dat hij wil toevoegen dan moet deze informatie via de volgende site worden verkregen: [Voedingswaardetabel](https://www.voedingswaardetabel.nl/voedingswaarde/). 
+- Wanneer de gebruiker de zout button aanklikt en die dag meer dan 6 gram zout heeft gegeten, moet hij het volgende advies van de hartstichting te zien krijgen: “Het advies is om niet meer dan 6 gram zout per dag te eten”  [Advies zout](https://www.hartstichting.nl/risicofactoren/gids-bloeddruk/tips-om-je-bloeddruk-te-verlagen?tab=3)
+- Wanneer de gebruiker de verzadigd vet button aanlikt en die dag meer dan de voor de gebruiker aanbevolen hoeveelheid aan verzadigd vet heeft binnengekregen (afhankelijk van geslacht en hoeveel calorieen de gebruiker gemiddeld binnenkrijgt), moet hij het volgende advies van het voedingscentrum te zien krijgen: “Er wordt in Nederland en vele andere landen aangeraden om niet meer dan 10% van je dagelijkse energie uit verzadigd vet te halen” [Advies verzadigd vet](https://www.voedingscentrum.nl/encyclopedie/verzadigd-vet.aspx).   
 
 ### Externe componenten
 
