@@ -35,7 +35,8 @@ const Toevoegen = () => {
 
     
     
-    const addFood = () => {
+    const addFood = event => {
+        event.preventDefault()
         const foodElement = foodRef.current;
         console.log(foodElement.value)
         const unitElement = unitRef.current;
@@ -51,10 +52,15 @@ const Toevoegen = () => {
             unit = "gram"
         }
         
-        
-        let addedFood = JSON.parse(localStorage.getItem(foodElement.value))
+        let info = JSON.parse(localStorage.getItem("info"))
 
-        if (addedFood === null) {
+        if (info === null) {
+            info = {}
+        }
+
+        let addedFood = info[foodElement.value]
+
+        if (addedFood === undefined) {
             addedFood = {
                 portie: {
                     salt: null,
@@ -70,88 +76,32 @@ const Toevoegen = () => {
                 }
             }
 
+
         }
 
         addedFood[unit].salt = saltElement.value
         addedFood[unit].fat = fatElement.value
 
-       
+        info[foodElement.value] = addedFood
 
-        localStorage.setItem(foodElement.value, JSON.stringify(addedFood));
-        // const foodData = JSON.parse(localStorage.getItem(foodElement.value))
-    
-    
-    
-    
-    
-     // addToLocalStorage()
-    
-    
-    
-        // const addToLocalStorage = Object.entries(localStorage).map(entry => {  
-    //     const name = entry[0]
-    //     const info = JSON.parse(entry[1])
-        
-    //     // hier een loop die loopt over de array met keys en geparsde values van de local storage. 
-    //     // De keys(voedingsmiddelen) vergelijkt met de user input (foodElement.value). 
-    //     // Wanneer een key gelijk is aan de user input een andere key gebruiken.
-    
-    //     for (let i = 0; i < localStorage.length; i = i + 2) {
-    //         if (localStorage[i] === foodElement.value) {
-    //             foodElement.value = foodElement.value.concat('2')
-    //             localStorage.setItem(foodElement.value, JSON.stringify(addedFood));
-    //             const foodData = JSON.parse(localStorage.getItem(foodElement.value))
-    //         }
-    //         else {
-    //             localStorage.setItem(foodElement.value, JSON.stringify(addedFood));
-    //             const foodData = JSON.parse(localStorage.getItem(foodElement.value))
-    //         }
-
-    //     }
-           
-
-    
-    //     });
+        localStorage.setItem("info", JSON.stringify(info));
+        setFood('')
+        setFat('')
+        setSalt('')
     }
     
     
             
         
     
-    // }
-
-    // iets van een for-loop die option tags returns met wat er in foodData is opgeslagen.
-    // const getFood = () => {
-    //     const foodElement = foodRef.current;
-
-    //     const [items, setItems] = useState([])
-
-    //     useEffect(() => {
-    //         const items = JSON.parse(localStorage.getItem(foodElement.value));
-    //         if (items) {
-    //          setItems(items);
-    //         }
-    //       }, []);
-
-    //       console.log(items)
-
-
-    // }
-
-    // iets van een for-loop die option tags returns met wat er in foodData is opgeslagen.
-    // const getFood = () => {
-    //     // erachter komen hoe "lang" food-data is
-    //     const items = JSON.parse(localStorage.getItem(foodElement.value));
-
-    // }
-    
+   
 
     
 
     return (
         <div className="toevoegen">
             <h2>Voedingsmiddel toevoegen aan lijst</h2>
-            <form>
+            <form onSubmit={addFood}>
                 <div>
                 <label>Voedingsmiddel</label>
                 </div>
@@ -200,7 +150,7 @@ const Toevoegen = () => {
                     value={fat}>
                     </input>
                 </div>
-                <button disabled={!food || !salt || !fat} onClick={addFood}>opslaan</button>
+                <button type="submit" disabled={!food || !salt || !fat}>opslaan</button>
             </form>
             <SelectFood />
            
@@ -214,15 +164,52 @@ const SelectFood = () => {
     const unitRef = useRef(null);
     const selectedRef = useRef(null);
 
-    const [selected, setSelected] = useState('');
+    let info = JSON.parse(localStorage.getItem("info"))
+
+    if (info === null) {
+        info = {}
+    }
+
+    const [selected, setSelected] = useState(Object.entries(info)[0] === undefined ? "" : Object.entries(info)[0][0]);
 
     const handleSelectChange = (event) => {
         setSelected(event.target.value);
     }
 
+    const [amount, setAmount] = useState('')
 
-    const options = Object.entries(localStorage).map(entry => {
-        const info = JSON.parse(entry[1])
+    const handleAmountChange = (event) => {
+        setAmount(event.target.value);
+    }
+
+
+    const getInitialUnit = () => {
+        const firstInfoEntry = Object.entries(info)[0];
+
+        if (firstInfoEntry === undefined) {
+            return ''
+        }
+
+        const units = firstInfoEntry[1];
+
+        if (units.gram.salt !== null) {
+            return 'gram'
+        }
+        if (units.portie.salt !== null) {
+            return 'portie'
+        }
+        return 'stuk'
+    }
+
+    const [unit, setUnit] = useState(getInitialUnit())
+
+    const handleUnitChange = (event) => {
+        setUnit(event.target.value);
+    }
+
+
+    const options = Object.entries(info).map(entry => {
+        const info = entry[1]
         const name = entry[0]
 
         return (<option> voedingsmiddel: {name} eenheid per: {info.unit} salt: {info.salt} verzadigd vet: {info.fat} </option>)
@@ -230,14 +217,13 @@ const SelectFood = () => {
 
     });
 
-    const getSelectOptionsFoodElements = Object.entries(localStorage).map(entry => {
+    const getSelectOptionsFoodElements = Object.entries(info).map(entry => {
         const name = entry[0]
 
         return(<option>{name}</option>)
         
     });
-    console.log(selected)
-    console.log(localStorage.getItem(selected))
+
     // const selectedInfo = localStorage.getItem(selectedRef.current.value)
 
     const getSelectOptionsUnits = () => {
@@ -245,10 +231,21 @@ const SelectFood = () => {
         // console.log(selectedRefElement.value)
 
         //const []
-        const selectedInfo = JSON.parse(localStorage.getItem(selected))
+        let info = JSON.parse(localStorage.getItem("info"))
+
+        if (info === null) {
+            info = {}
+        }
+
+
+        const selectedInfo = info[selected]
         console.log(selectedInfo)
         // const selectedInfo = localStorage.getItem(selectedRefElement.value)
         const selectOptions = []
+
+        if (selectedInfo === undefined) {
+            return [<option>"geen opties"</option>]
+        }
 
         if (selectedInfo.portie.salt !== null) {
             const unitOption = <option>portie(s)</option>
@@ -277,120 +274,74 @@ const SelectFood = () => {
     }
 
 
-    const WatAanHetTesten = () => {
-        const item = selected
-        alert(item)
+    // const WatAanHetTesten = () => {
+    //     const item = selected
+    //     alert(item)
+    // }
+
+    const today = event => {
+        event.preventDefault()
+        let consumed = JSON.parse(localStorage.getItem("consumed"))
+
+        if (consumed === null) {
+            consumed = []
+        }
+
+        //let consumedFood = consumed[selected]
+        // let consumedFood = consumed.selected
+
+
+        // if (consumedFood === undefined) {
+        //     consumedFood = {
+        //         name: null,
+        //         amount: null,
+        //         unit: null
+        //     }
+        // }
+
+        const consumedFood = {
+            name: selected,
+            amount: amount,
+            unit: unit
+        }
+
+        consumed.push(consumedFood)
+
+        localStorage.setItem("consumed", JSON.stringify(consumed))
+
+    
+
+
+
+
+
+
+
+
+        // addedFood[unit].salt = saltElement.value
+        // addedFood[unit].fat = fatElement.value
+
+        // info[foodElement.value] = addedFood
+
+        // localStorage.setItem("info", JSON.stringify(info));
+        // setFood('')
+        // setFat('')
+        // setSalt('')
+
+
+
+
+        setAmount('')
     }
 
 
-
-        // // banaan
-        // const name = entry[0]
-        // console.log(name)
-        // // info = [[portie]]:
-        // //     [[[salt]: [null],
-        // //     [fat]: [null]]]
-        // //
-        // // [gram]:
-        // //     [[salt]: [null],
-        // //     [fat]: [null]]
-        // // ,
-        // // [stuk]:
-        // //     [[salt]: [null],
-        // //     [fat]: [null]]]
-        // // }
-        // console.log(Object.entries(localStorage))
-        // const info = JSON.parse(entry[1])
-        // console.log(info)
-        // console.log(info.stuk.salt)
-
-
-
-        // // const optionsArray = []
-        // const selectOptions = []
-
-        
-
-        // if (name === selected && info.portie.salt !== null) {
-        //     const unitOption = "portie"
-        //     // return(<option>{info.unit}</option>)
-        //     //return(<option>{unitOption}</option>)
-        //     // optionsArray.concat({unitOption})
-        //     selectOptions.push({unitOption})
-        // }
-
-        // if (name === selected && info.stuk.salt !== null) {
-        //     const unitOption = "stuk"
-        //     // return(<option>{info.unit}</option>)
-        //     return(<option>{unitOption}</option>)
-        //     //optionsArray.concat({unitOption})
-        //     // selectOptions.concat({unitOption})
-
-        // }
-
-        // if (name === selected && info.gram.salt !== null){
-        //     const unitOption = "gram"
-        //     return(<option>{unitOption}</option>)
-        //     // optionsArray.concat({unitOption})
-        //     // selectOptions.concat({unitOption})
-        // }
-        // else {
-        //     // optionsArray.concat("geen optie(s)")
-        //     // selectOptions.concat("geen optie(s)")
-        //     return(<option>"geen optie(s)"</option>)
-        // }
-
-        
-        //const selectOptions = optionsArray.map((option) => <option>{option}</option>)
-        // return(selectOptions)
-        // console.log(selectOptions)
-
-
-
-
-
-        // if (name === selected && info.unit !== "100 gram") {
-        //     const unitOption = info.unit.concat("s")
-        //     // return(<option>{info.unit}</option>)
-        //     return(<option>{unitOption}</option>)
-        // }
-        // else if (name === selected && info.unit === "100 gram"){
-        //     const unitOptionGram = "gram"
-        //     return(<option>{unitOptionGram}</option>)
-        // }
-
-   // });
-    
-  
-
-
-
-    // const SaltandFatAmount = () => {
-    //     let salt = 0
-    //     let fat = 0
-
-    //     if (selectedRef.info.unit == 'stuk' || selectedRef.info.unit == 'portie') {
-    //         salt = salt + info.salt * amountRef
-    //         fat = fat + info.fat * amountRef
-    //     }
-
-    //     if (selectedRef.info.unit == '100 gram') {
-    //         salt = salt + info.salt / 100 * amountRef
-    //     }
-        
-        
-    //     salt += selectedRef.info.salt
-    //     fat += selectedRef.info.fat
-
-    //     return(salt, fat)
-    // }
 
 
 
     return (
         <>
             <h2>Voedingsmiddel toevoegen aan wat u vandaag gaat eten</h2>
-            <form>
+            <form onSubmit={today}>
                 <div>
                 <label>Selecteer welk voedingsmiddel u gaat eten</label>
                 <select 
@@ -405,7 +356,10 @@ const SelectFood = () => {
                 </div>
                 {/*<label>Hoeveel gaat u hiervan gaat eten in</label>*/}
                 <label>Hoeveel</label>
-                <select ref={unitRef}>
+                <select 
+                ref={unitRef}
+                onChange={handleUnitChange}
+                value={unit}>
                 {getSelectOptionsUnits()}
                     {/* <option>gram</option>
                     <option>stuk(s)</option>
@@ -415,21 +369,21 @@ const SelectFood = () => {
                 <div>
                     <input 
                         ref={amountRef}
+                        value={amount}
+                        onChange={handleAmountChange}
                         type="text"
                         required 
                         placeholder='3'>
                     </input>
                 </div>
                 <div>
-                <button /*onClick={SaltandFatAmount}*/>toevoegen</button>
+                <button type="submit"/*onClick={SaltandFatAmount}*/>toevoegen</button>
                 </div>
             </form>
         </>
-
-
-
-
     )
+
+    
 
 
 }
