@@ -1,0 +1,1 @@
+- Het onderste form en de getallen die de hoeveelheid zout en verzadigd aangeven, worden gelijk geüpdate.
