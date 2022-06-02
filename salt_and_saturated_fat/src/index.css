@@ -40,3 +40,38 @@ select {
   text-align: right;
 }
 */
+.everything {
+  text-align: center;
+}
+
+.title {
+  color:red;
+  text-align: center;
+}
+
+.info-algemeen {
+  text-align: center;
+}
+
+.advies {
+  text-align: center;
+}
+
+.first-form {
+  text-align:center;
+  padding-top: 20px;
+  padding-bottom: 100px;
+}
+
+.second-form {
+  text-align:center;
+  padding-top: 20px;
+  padding-bottom: 100px;
+}
+
+.toevoegen .saltAmount {
+  text-align:center;
+  padding-top: 20px;
+  padding-bottom: 100px;
+  color: green;
+}

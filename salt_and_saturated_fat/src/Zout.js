@@ -1,122 +1,58 @@
 import React, { Component } from 'react';
 import Plot from 'react-plotly.js';
 
-// const calcSaltFat = () => {
-//     var SaltandFatAmount = []
-//     let saltAmount = 0
-//     let fatAmount = 0
-    
-//     let consumed = JSON.parse(localStorage.getItem("consumed"))
-//     let info = JSON.parse(localStorage.getItem("info"))
+const SaltandFatAmount = (props) => {
+   
 
-//     if (consumed === null) {
-//         SaltandFatAmount = [saltAmount, fatAmount]
-//         return SaltandFatAmount
-//     }
-    
-//     for (let i = 0; i < consumed.length; i++) {
-//         let foodName = consumed[i].name
-//         let amount = consumed[i].amount
-//         let unit = consumed[i].unit
-//         console.log(unit)
+    let info = props.info
 
-//             if (unit === "portie(s)") {
-//                 unit = "portie"
-//             }
-//             if (unit === "stuk(s)") {
-//                 unit = "stuk"
-//             }
-//             // if (unit === "gram") {
-//             //     unit = "gram"
-//             // }
-//             // klopt niet
-//             // if (unit === undefined) {
-//             //     unit = "portie(s)"
-//             // }
+    if (info === null) {
+        info = {}
+    }
 
-//             if (unit === "portie" || unit === "stuk") {
-//                 saltAmount += info.foodName.unit.salt * amount
-//                 fatAmount += info.foodName.unit.fat * amount
-//             }
-//             if (unit === "gram") {
-//                 saltAmount += info.foodName.unit.salt/100 * amount
-//                 fatAmount += info.foodName.unit.fat/100 * amount
-//             }
-//     }
-//     SaltandFatAmount = [saltAmount, fatAmount]
-//     return SaltandFatAmount
-//     }
-    
+    let consumed = props.consumed
 
-    
+    if (consumed === null) {
+        consumed = []
+    }
+ 
+    for (let i = 0; i < consumed.length; i++) {
+        var saltAmount = 0
+        var fatAmount = 0
+        var saltAndFat = []
+        let food = consumed[i].name
+        let amount = consumed[i].amount
+        let unit = consumed[i].unit
+        
+            if (unit === "portie(s)") {
+                unit = "portie"
+            }
+            if (unit === "stuk(s)") {
+                unit = "stuk"
+            }
 
+            if (unit === "portie" || unit === "stuk") {
+                saltAmount += info[food][unit].salt * amount
+                fatAmount += info[food][unit].fat * amount
+                
+            }
+            if (unit === "gram") {
+                saltAmount += info[food][unit].salt/100 * amount
+                fatAmount += info[food][unit].fat/100 * amount
+            }
+    }
+    saltAndFat.push(saltAmount)
+    saltAndFat.push(fatAmount)
+    return saltAndFat
+}
+  
 function ZoutGrafiek(props) {
 //     var xSavings = [2, 5]
 //     var xSavings = calcSaltFat()
     var ySavings = ['zout', 'fat'];
-  
-    var xSavings = [1.3586, 3.78];
-    
-    
-
-    // var ySavings = ['zout', 'fat'];
-
-    // const calcSaltFat = () => {
-    //     var SaltandFatAmount = []
-    //     let saltAmount = 0
-    //     let fatAmount = 0
+    var xSavings = SaltandFatAmount()
+    //var xSavings = [1.3586, 3.78];
         
-    //     let consumed = JSON.parse(localStorage.getItem("consumed"))
-    //     let info = JSON.parse(localStorage.getItem("info"))
-
-    //     if (consumed === null) {
-    //         saltAmount = 0
-    //         fatAmount = 0
-    //     }
-    //     else {
-    //         for (let i = 0; i < consumed.length; i++) {
-    //             let foodName = consumed[i].name
-    //             let amount = consumed[i].amount
-    //             let unit = consumed[i].unit
-    //             console.log(unit)
-
-    //                 if (unit === "portie(s)") {
-    //                     unit = "portie"
-    //                 }
-    //                 if (unit === "stuk(s)") {
-    //                     unit = "stuk"
-    //                 }
-    //                 if (unit === "gram") {
-    //                     unit = "gram"
-    //                 }
-    //                 // klopt niet
-    //                 // if (unit === undefined) {
-    //                 //     unit = "portie(s)"
-    //                 // }
-
-    //                 if (unit === "portie(s)" || unit === "stuk(s)") {
-    //                     saltAmount += info.foodName.unit.salt * amount
-    //                     fatAmount += info.foodName.unit.fat * amount
-    //                 }
-    //                 if (unit === "gram") {
-    //                     saltAmount += info.foodName.unit.salt/100 * amount
-    //                     fatAmount += info.foodName.unit.fat/100 * amount
-    //                 }
-    //         }
-
-    //         }
-    //         SaltandFatAmount = [saltAmount, fatAmount]
-    //         return SaltandFatAmount
-    //     }
-        
-    
-    
-    
-   
-
-
-
-    
     
     var trace1 = {
     x: xSavings,

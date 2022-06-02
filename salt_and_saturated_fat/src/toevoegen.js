@@ -365,12 +365,8 @@ const SaltandFatAmount = (props) => {
 
     return (
         <>
-            <h1>U heeft vandaag</h1>
-            <h1>{calcSalt()}</h1>
-            <h1>gram zout binnengekregen</h1>
-            <h1>U heeft vandaag</h1>
-            <h1>{calcFat()}</h1>
-            <h1>gram vet binnengekregen</h1>
+            <h1>U heeft vandaag {calcSalt()} gram zout binnengekregen</h1>
+            <h1>U heeft vandaag {calcFat()} gram vet binnengekregen</h1>
         </>
 
     )
