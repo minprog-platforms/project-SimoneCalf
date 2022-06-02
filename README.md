@@ -1,5 +1,8 @@
 # Voorstel
 
+## Screencast
+https://youtu.be/muViAx56TyU
+
 ## Probleem
 Momenteel is er voor hartpatiënten geen applicatie waarmee zij makkelijk bij kunnen houden hoeveel zout en verzadigd vet zij binnenkrijgen. Een hoge bloeddruk verhoogt de kans op een hartinfarct of beroerte en een hoog cholesterolgehalte de kans op hart- en vaatziekten. Zout eten kan de bloeddruk verhogen en het eten van verzadigd vet het cholesterol. [zout en bloeddruk](https://www.hartstichting.nl/risicofactoren/gids-bloeddruk/tips-om-je-bloeddruk-te-verlagen?tab=3) [voeding, verzadigd vet en cholesterol](https://www.hartstichting.nl/risicofactoren/gids-cholesterol/zelf-je-cholesterol-verlagen?tab=2)
 
