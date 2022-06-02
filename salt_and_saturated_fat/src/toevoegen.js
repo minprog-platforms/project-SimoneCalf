@@ -3,7 +3,7 @@ import { useRef, useState } from 'react';
 import React from 'react';
 
 
-const AddedAndConsumed = () => {
+const AddedAndConsumed = (props) => {
     const foodRef = useRef(null);
     const unitRef = useRef(null);
     const saltRef = useRef(null);
@@ -74,6 +74,7 @@ const AddedAndConsumed = () => {
         info[foodElement.value] = addedFood
 
         localStorage.setItem("info", JSON.stringify(info));
+        props.setInfo(info)
         setFood('')
         setFat('')
         setSalt('')
@@ -134,17 +135,17 @@ const AddedAndConsumed = () => {
                 </div>
                 <button type="submit" disabled={!food || !salt || !fat}>opslaan</button>
             </form>
-            <SelectFood />
+            
         </div>
     );
 }
 
-const SelectFood = () => {
+const SelectFood = (props) => {
     const amountRef = useRef(null);
     const unitRef = useRef(null);
     const selectedRef = useRef(null);
 
-    let info = JSON.parse(localStorage.getItem("info"))
+    let info = props.info
 
     if (info === null) {
         info = {}
@@ -192,24 +193,22 @@ const SelectFood = () => {
 
     const getSelectOptionsFoodElements = Object.entries(info).map(entry => {
         const name = entry[0]
-        return(<option>{name}</option>)
+        return(<option key={name}>{name}</option>)
     });
 
 
     const getSelectOptionsUnits = () => {
-       
-        let info = JSON.parse(localStorage.getItem("info"))
+    
 
-        if (info === null) {
-            info = {}
-        }
-
-        const selectedInfo = info[selected]
-        console.log(selectedInfo)
+        let selectedInfo = info[selected]
         const selectOptions = []
 
+        if (selected === '' && Object.keys(info).length !== 0) {
+            selectedInfo = info[Object.keys(info)[0]]
+        }
+
         if (selectedInfo === undefined) {
-            return [<option>"geen opties"</option>]
+            return [<option>geen opties</option>]
         }
 
         if (selectedInfo.portie.salt !== null) {
@@ -237,13 +236,16 @@ const SelectFood = () => {
         }
 
         const consumedFood = {
-            name: selected,
-            amount: amount,
-            unit: unit
+            name: selectedRef.current.value,
+            amount: amountRef.current.value,
+            unit: unitRef.current.value
         }
 
         consumed.push(consumedFood)
         localStorage.setItem("consumed", JSON.stringify(consumed))
+
+        props.setConsumed(consumed)
+
         setAmount('')
     }
 
@@ -258,7 +260,6 @@ const SelectFood = () => {
                 onChange={handleSelectChange}
                 value={selected}
                 ref={selectedRef}>
-                hier iets van een variabel toevoegen en die assignen aan een functie die key value pairs uit de local storage ophaalt
                 {getSelectOptionsFoodElements}
                 </select>
                 </div>
@@ -286,7 +287,79 @@ const SelectFood = () => {
             </form>
         </>
     )
+
 }
+
+const SaltandFatAmount = (props) => {
+    let info = props.info
+
+    if (info === null) {
+        info = {}
+    }
+
+    let consumed = props.consumed
+
+    if (consumed === null) {
+        consumed = []
+    }
+
+    const calcSaltFat = () => {
+        let saltAmount = 0
+
+
+        if (consumed === null) {
+            return saltAmount
+        }
+        
+        for (let i = 0; i < consumed.length; i++) {
+            let food = consumed[i].name
+            console.log(food)
+            let amount = consumed[i].amount
+            
+            let unit = consumed[i].unit
+            
+            
+
+                if (unit === "portie(s)") {
+                    
+                    unit = "portie"
+                }
+                if (unit === "stuk(s)") {
+                    
+                    unit = "stuk"
+                    console.log(unit)
+                }
+
+    
+
+                
+                if (unit === "portie" || unit === "stuk") {
+                    saltAmount += info[food][unit].salt * amount
+                }
+                if (unit === "gram") {
+                    saltAmount += info[food][unit].salt/100 * amount
+                }
+        }
+        return saltAmount
+        }
+
+
+    return (
+        <>
+            <h1>U heeft vandaag</h1>
+            <h1>{calcSaltFat()}</h1>
+            <h1>gram zout binnengekregen</h1>
+        </>
+
+    )
+
+
+
+
+
+
+    }
 
 
 export default AddedAndConsumed;
+export {SaltandFatAmount, SelectFood};
