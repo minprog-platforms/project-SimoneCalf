@@ -2,6 +2,11 @@
 
 ![ongebruikt](<img width="953" alt="ongebruikt" src="https://user-images.githubusercontent.com/90318458/171725743-30934d3c-abd3-4bf2-90ce-426bb7da2a56.PNG">)
 
+![drie_een](<img width="953" alt="ongebruikt" src="https://user-images.githubusercontent.com/90318458/171725905-fba6f272-0d5d-49ee-ab0f-4e6ffac418d5.PNG">)
+<img width="953" alt="bovenste-form" src="https://user-images.githubusercontent.com/90318458/171725914-f3af1724-adb0-413e-866d-cb476649e268.PNG">
+<img width="952" alt="onderste-form" src="https://user-images.githubusercontent.com/90318458/171725921-148385e0-fe50-4664-b84f-d3c3ce89a1c1.PNG">
+<img width="953" alt="zout-en-vet" src="https://user-images.githubusercontent.com/90318458/171725932-f8fdf4e9-0bc5-4714-be03-976453ccf8f5.PNG">
+
 
 ## Screencast
 https://youtu.be/muViAx56TyU
