@@ -12,6 +12,7 @@ function App() {
   return (
     <div className="App">
       <>
+      <div className='everything'>
         <h1 className="title">Voeding & Hart</h1>
         <h3 className="info-algemeen">
           Met deze applicatie kunt u bijhouden hoeveel zout en verzadigd vet u op een dag binnenkrijgt. 
@@ -28,9 +29,11 @@ function App() {
         <div className='second-form'>
           <SelectFood info={info} setConsumed={setConsumed}/>
         </div>
-        
-        <SaltandFatAmount info={info} consumed={consumed}/>
+        <div className='consumed'>
+          <SaltandFatAmount info={info} consumed={consumed}/>
+        </div>
         {/*<ZoutGrafiek info={info} consumed={consumed} /> */}
+        </div>
       </>
     </div>
   );

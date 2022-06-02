@@ -1,8 +1,6 @@
-#voedingsmiddel_toevoegen {
-    color: blue;
-}
-
-.inline {
-    padding-right: 25px 50px 75px 100px;
-    color: blue;
+.saltAmount {
+    padding-bottom: 40px;
+    padding-top: 40px;
+    background-color: blue;
+    color:white;
 }
