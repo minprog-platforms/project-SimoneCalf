@@ -303,7 +303,7 @@ const SaltandFatAmount = (props) => {
         consumed = []
     }
 
-    const calcSaltFat = () => {
+    const calcSalt = () => {
         let saltAmount = 0
 
 
@@ -313,26 +313,16 @@ const SaltandFatAmount = (props) => {
         
         for (let i = 0; i < consumed.length; i++) {
             let food = consumed[i].name
-            console.log(food)
             let amount = consumed[i].amount
-            
             let unit = consumed[i].unit
             
-            
-
                 if (unit === "portie(s)") {
-                    
                     unit = "portie"
                 }
                 if (unit === "stuk(s)") {
-                    
                     unit = "stuk"
-                    console.log(unit)
                 }
 
-    
-
-                
                 if (unit === "portie" || unit === "stuk") {
                     saltAmount += info[food][unit].salt * amount
                 }
@@ -343,20 +333,47 @@ const SaltandFatAmount = (props) => {
         return saltAmount
         }
 
+    const calcFat = () => {
+        let fatAmount = 0
+
+        if (consumed === 0) {
+            return fatAmount
+        }
+
+        for (let i = 0; i < consumed.length; i++) {
+            let food = consumed[i].name
+            let amount = consumed[i].amount
+            let unit = consumed[i].unit
+                if (unit === "portie(s)") {
+                    unit = "portie"
+                }
+                if (unit === "stuk(s)") {
+                    unit = "stuk"
+                }
+
+                if (unit === "portie" || unit === "stuk") {
+                    fatAmount += info[food][unit].fat * amount
+                }
+                if (unit === "gram") {
+                    fatAmount += info[food][unit].fat/100 * amount
+                }
+        }
+        return fatAmount
+        }
+    
+
 
     return (
         <>
             <h1>U heeft vandaag</h1>
-            <h1>{calcSaltFat()}</h1>
+            <h1>{calcSalt()}</h1>
             <h1>gram zout binnengekregen</h1>
+            <h1>U heeft vandaag</h1>
+            <h1>{calcFat()}</h1>
+            <h1>gram vet binnengekregen</h1>
         </>
 
     )
-
-
-
-
-
 
     }
 
