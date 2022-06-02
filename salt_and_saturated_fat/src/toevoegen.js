@@ -85,8 +85,8 @@ const AddedAndConsumed = (props) => {
         <div className="toevoegen">
             <h2>Voedingsmiddel toevoegen aan lijst</h2>
             <form onSubmit={addToLS}>
-                <div>
-                <label>Voedingsmiddel</label>
+                <div className='voedingsmiddel-label'>
+                    <label>Voedingsmiddel</label>
                 </div>
                 <div>
                     <input
@@ -99,46 +99,48 @@ const AddedAndConsumed = (props) => {
                         >
                     </input>
                 </div>
-                <div>
-                <label>Eenheid</label>
+                <div className='eenheid-label'>
+                    <label>Eenheid</label>
                 </div>
                 <div>
-                <select ref={unitRef}>
-                    <option value='stuk'>stuk</option>
-                    <option value='100 gram'>100 gram</option>
-                    <option value='portie'>portie</option>
+                    <select ref={unitRef}>
+                        <option value='stuk'>stuk</option>
+                        <option value='100 gram'>100 gram</option>
+                        <option value='portie'>portie</option>
                 </select>
                 </div>
-                <div>
-                <label>Zout (in gram)</label>
+                <div className='zout-label'>
+                    <label>Zout (in gram)</label>
                 </div>
                 <div>
-                <input 
-                    ref={saltRef}
-                    type="text"
-                    required
-                    placeholder='12,6'
-                    onChange={handleSaltChange}
-                    value={salt}>
-                </input>
-                </div>
-                <label>Verzadigs vet (in gram)</label>
-                <div>
-                <input 
-                    ref={fatRef}
-                    type="text"
-                    required 
-                    placeholder='3,28'
-                    onChange={handleFatChange}
-                    value={fat}>
+                    <input 
+                        ref={saltRef}
+                        type="text"
+                        required
+                        placeholder='12,6'
+                        onChange={handleSaltChange}
+                        value={salt}>
                     </input>
+                </div>
+                <div className='verzadigd-vet-label'>
+                    <label>Verzadigs vet (in gram)</label>
+                </div>
+                <div>
+                    <input 
+                        ref={fatRef}
+                        type="text"
+                        required 
+                        placeholder='3,28'
+                        onChange={handleFatChange}
+                        value={fat}>
+                        </input>
                 </div>
                 <button type="submit" disabled={!food || !salt || !fat}>opslaan</button>
             </form>
-            
         </div>
     );
 }
+
 
 const SelectFood = (props) => {
     const amountRef = useRef(null);
@@ -198,8 +200,6 @@ const SelectFood = (props) => {
 
 
     const getSelectOptionsUnits = () => {
-    
-
         let selectedInfo = info[selected]
         const selectOptions = []
 
@@ -215,10 +215,12 @@ const SelectFood = (props) => {
             const unitOption = <option>portie(s)</option>
             selectOptions.push(unitOption)
         }
+
         if (selectedInfo.stuk.salt !== null) {
             const unitOption = <option>stuk(s)</option>
             selectOptions.push(unitOption)
         }
+
         if (selectedInfo.gram.salt !== null) {
             const unitOption = <option>gram</option>
             selectOptions.push(unitOption)
@@ -227,7 +229,7 @@ const SelectFood = (props) => {
     }
 
 
-    const today = event => {
+    const addToLSConsumed = event => {
         event.preventDefault()
         let consumed = JSON.parse(localStorage.getItem("consumed"))
 
@@ -253,26 +255,28 @@ const SelectFood = (props) => {
     return (
         <>
             <h2>Voedingsmiddel toevoegen aan wat u vandaag gaat eten</h2>
-            <form onSubmit={today}>
+            <form onSubmit={addToLSConsumed}>
                 <div>
-                <label>Selecteer welk voedingsmiddel u gaat eten</label>
-                <select 
-                onChange={handleSelectChange}
-                value={selected}
-                ref={selectedRef}>
-                {getSelectOptionsFoodElements}
-                </select>
+                    <label className='select-voedingsmiddel-label'>Selecteer welk voedingsmiddel u gaat eten</label>
+                    <select 
+                        onChange={handleSelectChange}
+                        value={selected}
+                        ref={selectedRef}>
+                        {getSelectOptionsFoodElements}
+                    </select>
                 </div>
-                <label>Hoeveel</label>
-                <select 
-                ref={unitRef}
-                onChange={handleUnitChange}
-                value={unit}>
-                {getSelectOptionsUnits()}
-                </select>
-                <label>gaat u hiervan gaat eten?</label>
+                <div className='hoeveelheid-label'>
+                    <label>Hoeveel</label>
+                    <select 
+                    ref={unitRef}
+                    onChange={handleUnitChange}
+                    value={unit}>
+                        {getSelectOptionsUnits()}
+                    </select>
+                    <label className='hoeveelheid-label'>gaat u hiervan gaat eten?</label>
+                </div>
                 <div>
-                    <input 
+                    <input
                         ref={amountRef}
                         value={amount}
                         onChange={handleAmountChange}
@@ -282,13 +286,13 @@ const SelectFood = (props) => {
                     </input>
                 </div>
                 <div>
-                <button type="submit">toevoegen</button>
+                    <button type="submit">toevoegen</button>
                 </div>
             </form>
         </>
     )
-
 }
+
 
 const SaltandFatAmount = (props) => {
     let info = props.info
@@ -305,7 +309,6 @@ const SaltandFatAmount = (props) => {
 
     const calcSalt = () => {
         let saltAmount = 0
-
 
         if (consumed === null) {
             return saltAmount
@@ -332,6 +335,7 @@ const SaltandFatAmount = (props) => {
         }
         return saltAmount
         }
+
 
     const calcFat = () => {
         let fatAmount = 0
@@ -362,7 +366,6 @@ const SaltandFatAmount = (props) => {
         }
     
 
-
     return (
         <>
             <h2 className='saltAmount'>U heeft vandaag {calcSalt()} gram zout binnengekregen</h2>
@@ -370,7 +373,6 @@ const SaltandFatAmount = (props) => {
         </>
 
     )
-
     }
 
 

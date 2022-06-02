@@ -1,6 +1,10 @@
 .saltAmount {
     padding-bottom: 40px;
-    padding-top: 40px;
-    background-color: blue;
-    color:white;
+    padding-top: 20px;
 }
+
+.voedingsmiddel-label, .eenheid-label, .zout-label, .verzadigd-vet-label, .select-voedingsmiddel-label, .hoeveelheid-label {
+    font-size: 20px;
+}
+
+
